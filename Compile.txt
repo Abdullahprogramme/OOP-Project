@@ -1,0 +1,1 @@
+g++ -o maze.exe Sources/*.cpp  Main/main.cpp -I C:\raylib1\include -L C:\raylib1\lib -lraylib -lopengl32 -lgdi32 -lwinmm

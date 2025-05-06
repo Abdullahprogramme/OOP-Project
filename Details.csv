@@ -1,0 +1,7 @@
+Name          , Health, Attack, Speed, Lives
+SpeedPlayer ,    100,     50,     2,     4
+HealthPlayer,    150,     50,     1,     4
+LivesPlayer ,    100,     50,     1,     7
+Enemy1      ,     50,     50,     1,     1
+Enemy2      ,    100,    100,     1,     1
+BigEnemy    ,    200,    150,     1,     1
