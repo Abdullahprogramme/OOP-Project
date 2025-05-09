@@ -160,9 +160,12 @@ Screen* PlayerSelectionScreen::show() {
         // Handle name entry
         int key = GetCharPressed();
         if (key > 0 && letterCount < 19) {
-            playerName[letterCount] = (char)key;
-            letterCount++;
-            playerName[letterCount] = '\0';
+            // Allow only alphanumeric characters
+            if ((key >= 'A' && key <= 'Z') || (key >= 'a' && key <= 'z') || (key >= '0' && key <= '9')) {
+                playerName[letterCount] = (char)key;
+                letterCount++;
+                playerName[letterCount] = '\0';
+            }
         }
 
         if (IsKeyPressed(KEY_BACKSPACE) && letterCount > 0) {
