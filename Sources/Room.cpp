@@ -131,32 +131,36 @@ void Room::printMap(Player* player) {
             if (row < map.size() && col < map[row].size()) {
                 auto cell = map[row][col];
                 if (!cell.empty()) {
-                    char cellType = cell[0].first;
-                    void* entity = cell[0].second;
+                    // char cellType = cell[0].first;
+                    // void* entity = cell[0].second;
+                    for (unsigned int i = 0; i < cell.size(); ++i) {
+                        char cellType = cell[i].first;
+                        void* entity = cell[i].second;
 
-                    // Draw based on cell type
-                    if (cellType == WALL) { // Wall
-                        DrawTextureEx(wallTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, 0.08f, WHITE);
-                    } else if (cellType == PLAYER) { // Player
-                        if (SpeedPlayer* sp = dynamic_cast<SpeedPlayer*>(static_cast<Player*>(entity))) {
-                            DrawTextureEx(SpeedplayerTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
-                        } else if (HealthPlayer* hp = dynamic_cast<HealthPlayer*>(static_cast<Player*>(entity))) {
-                            DrawTextureEx(HealthplayerTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
-                        } else if (LivesPlayer* lp = dynamic_cast<LivesPlayer*>(static_cast<Player*>(entity))) {
-                            DrawTextureEx(LivesplayerTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
+                        // Draw based on cell type
+                        if (cellType == WALL) { // Wall
+                            DrawTextureEx(wallTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, 0.08f, WHITE);
+                        } else if (cellType == PLAYER) { // Player
+                            if (SpeedPlayer* sp = dynamic_cast<SpeedPlayer*>(static_cast<Player*>(entity))) {
+                                DrawTextureEx(SpeedplayerTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
+                            } else if (HealthPlayer* hp = dynamic_cast<HealthPlayer*>(static_cast<Player*>(entity))) {
+                                DrawTextureEx(HealthplayerTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
+                            } else if (LivesPlayer* lp = dynamic_cast<LivesPlayer*>(static_cast<Player*>(entity))) {
+                                DrawTextureEx(LivesplayerTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
+                            }
+                        } else if (cellType == ENEMY1) { // Enemy type 1
+                            DrawTextureEx(enemy1Texture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, 0.30f, WHITE);
+                        } else if (cellType == ENEMY2) { // Enemy type 2
+                            DrawTextureEx(enemy2Texture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, 0.07f, WHITE);
+                        } else if (cellType == BIG_ENEMY) { // Big enemy
+                            DrawTextureEx(bigEnemyTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, 0.080f, WHITE);
+                        } else if (cellType == COIN) { // Coin
+                            DrawTextureEx(coinTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
+                        } else if (cellType == Special_Coin) { // Special coin
+                            DrawTextureEx(specialCoinTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
+                        } else if (cellType == Key) { // Key
+                            DrawTextureEx(keyTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
                         }
-                    } else if (cellType == ENEMY1) { // Enemy type 1
-                        DrawTextureEx(enemy1Texture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, 0.30f, WHITE);
-                    } else if (cellType == ENEMY2) { // Enemy type 2
-                        DrawTextureEx(enemy2Texture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, 0.07f, WHITE);
-                    } else if (cellType == BIG_ENEMY) { // Big enemy
-                        DrawTextureEx(bigEnemyTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, 0.080f, WHITE);
-                    } else if (cellType == COIN) { // Coin
-                        DrawTextureEx(coinTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
-                    } else if (cellType == Special_Coin) { // Special coin
-                        DrawTextureEx(specialCoinTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
-                    } else if (cellType == Key) { // Key
-                        DrawTextureEx(keyTexture, Vector2{static_cast<float>(x), static_cast<float>(y)}, 0.0f, scale, WHITE);
                     }
                 }
             }
